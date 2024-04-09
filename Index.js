@@ -16,8 +16,8 @@ function ObterUsuario(callback) {
 function ObterTelefone(idUsuario, callback) {
   setTimeout(() => {
     return callback(null, {
-      Telefone: "99932-2427",
-      ddd: "21",
+      Telefone: "",
+      ddd: "",
     });
   }),
     2000;
@@ -25,8 +25,8 @@ function ObterTelefone(idUsuario, callback) {
 function ObterEndereço(idUsuario, callback) {
   setTimeout(() => {
     return callback(null, {
-      Rua: "Afonso Mello",
-      Bairro: "Rio Varzea",
+      Rua: "",
+      Bairro: "",
     });
   });
   1000;
