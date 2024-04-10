@@ -21,24 +21,23 @@ function ObterTelefone(idUsuario) {
   return new Promise(function resolverpromise(resolve, reject) {
     setTimeout(() => {
       return resolve({
-        Telefone: "",
-        ddd: "",
+        Telefone: "26392587",
+        ddd: "21",
       });
     }),
       2000;
   });
 }
-function ObterEndereço(idUsuario) {
-  return new Promise(function endereçoPromise(resolve, reject) {
-    setTimeout(() => {
-      return resolve({
-        Rua: "Dos bobos",
-        Bairro: "Doido",
-      });
+function ObterEndereço(idUsuario, callback) {
+  setTimeout(() => {
+    return callback(null, {
+      Rua: "Dos bobos",
+      Bairro: "Doido",
     });
-    1000;
   });
+  1000;
 }
+
 const usuariopromise = ObterUsuario();
 //Para manipular a sucesso chamamos a função .then
 //para manipular erros, usamos o .catch
@@ -57,7 +56,13 @@ usuariopromise
   })
   .then(function (answer) {
     const endereço = obterEndereçoAsync(answer.usuario.id);
-    return endereço;
+    return endereço.then(function ResolverEndereço(result) {
+      return {
+        usuario: answer.usuario,
+        telefone: answer.telefone,
+        endereço: endereço,
+      };
+    });
   })
   .then(function (resultado) {
     console.log("resultado", resultado);
