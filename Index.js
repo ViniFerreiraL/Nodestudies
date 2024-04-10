@@ -21,8 +21,8 @@ function ObterTelefone(idUsuario) {
   return new Promise(function resolverpromise(resolve, reject) {
     setTimeout(() => {
       return resolve({
-        Telefone: "26392587",
-        ddd: "21",
+        Telefone: "",
+        ddd: "",
       });
     }),
       2000;
@@ -31,8 +31,8 @@ function ObterTelefone(idUsuario) {
 function ObterEndereço(idUsuario, callback) {
   setTimeout(() => {
     return callback(null, {
-      Rua: "Dos bobos",
-      Bairro: "Doido",
+      Rua: "",
+      Bairro: "",
     });
   });
   1000;
@@ -60,12 +60,14 @@ usuariopromise
       return {
         usuario: answer.usuario,
         telefone: answer.telefone,
-        endereço: endereço,
+        endereço: result,
       };
     });
   })
   .then(function (resultado) {
-    console.log("resultado", resultado);
+    console.log(`Nome ${resultado.usuario.Nome}
+          Telefone: (${resultado.telefone.ddd}) ${resultado.telefone.Telefone}
+          Endereço: Rua: ${resultado.endereço.Rua}, Bairro: ${resultado.endereço.Bairro}`);
   })
   .catch(function (error) {
     console.error("Deu Ruim Aqui jogador");
