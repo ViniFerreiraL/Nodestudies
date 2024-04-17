@@ -1,7 +1,7 @@
 const service = require("./Services");
 Array.prototype.MeuMap = function (callback) {
   const novoArrayMapeado = [];
-  for (let indicide = 0; indicide <= this.length - 1; indicide++) {
+  for (let indicide = 1; indicide <= this.length - 1; indicide++) {
     const mapeado = callback(this[indicide], indicide);
     novoArrayMapeado.push(mapeado);
   }
@@ -22,7 +22,7 @@ async function main() {
     // });
     // const names = results.results.map((pessoa) => pessoa.name);
     const names = results.results.MeuMap(function (pessoa, indicide) {
-      return pessoa.name;
+      return [`${indicide}: ${pessoa.name}`];
     });
     console.log("names:", names);
   } catch (error) {
