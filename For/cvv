@@ -1,0 +1,52 @@
+https://swapi.py4e.com/api/people
+const axios = require("axios");
+const URL = `https://swapi.py4e.com/api/people`;
+
+async function obterPessoas(nome) {
+const url = `${URL}/?search=${nome}&format=json`;
+const response = await axios.get(url);
+return response.data;
+}
+obterPessoas("Luke")
+.then(function (resultado) {
+console.log("Resultado", resultado);
+})
+.catch(function (error) {
+console.error("ERROR", error);
+});
+results.results.forEach(function (item) {
+    names.push(item.name);
+  });
+///////////////////////////////////////////
+const service = require("./Services");
+Array.prototype.MeuMap = function (callback) {
+  const novoArrayMapeado = [];
+  for (indicide = 1; indicide <= this.length - 1; indicide++) {
+    const NewMap = callback(this[indicide], indicide);
+    novoArrayMapeado.push(NewMap);
+  }
+  return novoArrayMapeado;
+};
+async function main() {
+  try {
+    //Esse results esta pegando os dados do service
+    const results = await service.obterPessoas("a");
+    // //Aqui crio uma array vazia pra implemntar os nomes dentro dela
+    // const names = [];
+    // results.results.forEach(function (item) {
+    //   //Esse name.push pega cada nome do array list
+    //   names.push(item.name);
+    // });
+    // const names = results.results.map(function (pessoa) {
+    //   return pessoa.name;
+    // });
+    // const names = results.results.map((pessoa) => pessoa.name);
+    const names = results.results.MeuMap(function (pessoa, indicide) {
+      return [`${indicide}:${pessoa.name}`];
+    });
+    console.log("names:", names);
+  } catch (error) {
+    console.error("error", error);
+  }
+}
+main();
