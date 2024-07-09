@@ -1,5 +1,5 @@
 const { obterPessoas } = require("./Services");
-Array.prototype.MeuFilter = function (callback) {
+Array.prototype.myFilter = function (callback) {
   const lista = [];
   for (index in this) {
     const item = this[index];
@@ -13,7 +13,7 @@ Array.prototype.MeuFilter = function (callback) {
 async function main() {
   try {
     const { results } = await obterPessoas("a");
-    const familialars = results.MeuFilter((item, index, lista) => {
+    const familialars = results.myFilter((item, index, lista) => {
       console.log(`index: ${index}`, lista.length);
       return item.name.toLowerCase().indexOf("lars") !== -1;
     });

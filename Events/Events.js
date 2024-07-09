@@ -10,10 +10,10 @@
 // meuEmissor.emit(novoEmissor, "Ele clicou na barra de rolagem");
 // meuEmissor.emit(novoEmissor, "Ele clicou no ok");
 
-// // let count = 0;
-// // setInterval(function () {
-// //   meuEmissor.emit(novoEmissor, "Ele clicou no ok" + count++);
-// // }, 1000);
+// let count = 0;
+// setInterval(function () {
+//   meuEmissor.emit(novoEmissor, "Ele clicou no ok" + count++);
+// }, 1000);
 
 // const stdin = process.openStdin();
 // stdin.addListener("data", function (value) {
